@@ -52,9 +52,9 @@
                   </div>
                 </div>
                 <div class="column middle aligned">
-                  <a href="/assistedsale/index" class="ui black button position-button">
-                    Comprar para outro cliente
-                  </a>
+                    <a href="/assistedsale/index" class="ui black button position-button">
+                        Alterar o cliente
+                    </a>
                 </div>
               </div>
               <!-- Fim Venda Assistida -->
@@ -138,7 +138,7 @@
                             <div class="ui action input">
                               <input type="text" placeholder="00000-000"
                                      class="masked mask_zipcode" size="9" name="cep" id="shipping">
-                              <button class="ui right labeled icon button frete calcular buttonsMiniCart @(permiteVenda == true ? "enabled" : "disabled")" id="CallServiceShippingMiniCart">
+                              <button class="ui right labeled icon button frete calcular buttonsMiniCart" id="CallServiceShippingMiniCart">
                                 <i class="shipping icon"></i>
                                 Calcular
                               </button>
@@ -191,5 +191,6 @@
     <input type="hidden" name="sessionId" id="sessionId" value="@(Session["SessionId"] != null ? Session["SessionId"].ToString() : string.Empty)" />
     <input type="hidden" id="id_frete_selecionado" />
     <input type="hidden" id="cep_selecionado" />
+    <input type="hidden" id="permiteVenda" value="@permiteVenda.ToString()" />
   </div>
 }
