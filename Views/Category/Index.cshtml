@@ -14,14 +14,6 @@
   }
 }
 
-@section banner {
-  @if (Model != null)
-  {
-    <!-- ~/Views/Shared/Blocks/Banner/_BannerCategory.cshtml -->
-    @Html.Action("BannerCategory", "Banner", new { id = Model.IdCategory, type = 'F' })
-  }
-}
-
 @section breadcrumbs {
   <div class="ui two column centered grid stackable middle aligned margin top bottom no breadcrumbs">
     <div class="row">
@@ -38,7 +30,13 @@
     </div>
   </div>
 }
-
+@section banner {
+  @if (Model != null)
+  {
+    <!-- ~/Views/Shared/Blocks/Banner/_BannerCategory.cshtml -->
+    @Html.Action("BannerCategory", "Banner", new { id = Model.IdCategory, type = 'F' })
+  }
+}
 @section filters {
   <div class="four wide column filterColumn">
     <div class="row one column filterBlock">

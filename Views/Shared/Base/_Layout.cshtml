@@ -39,6 +39,9 @@
         }
     }
     <!-- End Google Analytics -->
+
+
+
 </head>
 <body>
     @if (LojaCorp.Control.Company._Company.StatusGTM)
@@ -56,19 +59,21 @@
 
     <div class="pusher">
         <!-- ~/Views/Shared/Common/_TopBar.cshtml -->
-        @Html.Partial("Common/_TopBar")
+        <!-- @Html.Partial("Common/_TopBarTanto") -->
 
         <!-- ~/Views/Shared/Common/_Head.cshtml -->
         @Html.Partial("Common/_Head")
 
         <!-- ~/Views/Shared/Common/_Menu.cshtml -->
-        @Html.Action("Menu", "Home")
+             @Html.Action("Menu", "Home")
 
         @RenderBody()
 
-        <!-- ~/Views/Shared/Common/_Footer.cshtml -->
-        @Html.Partial("Common/_Footer")
+
     </div>
+
+    <!-- ~/Views/Shared/Common/_Footer.cshtml -->
+    @Html.Partial("Common/_FooterTanto")
 
     @RenderSection("remarketing", required: false)
 

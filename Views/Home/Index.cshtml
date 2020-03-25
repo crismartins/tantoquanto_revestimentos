@@ -1,4 +1,11 @@
-﻿@{
+﻿<!--@{
+    ViewBag.Title = string.IsNullOrEmpty(LojaCorp.Control.Company._Company.Title) ? LojaCorp.Control.Company._Company.NameStore : LojaCorp.Control.Company._Company.Title;
+    Layout = "~/Views/Shared/Base/_Layout.cshtml";
+}
+
+-->
+
+@{
     ViewBag.Title = string.IsNullOrEmpty(LojaCorp.Control.Company._Company.Title) ? LojaCorp.Control.Company._Company.NameStore : LojaCorp.Control.Company._Company.Title;
     Layout = "~/Views/Shared/Base/_Layout.cshtml";
 }
@@ -28,3 +35,149 @@
 
 <!-- ~/Views/Shared/Blocks/Brand/_Brands.cshtml -->
 @Html.Action("Brand", "Product")
+
+
+
+<div class="container">
+<div class="bloco-categorias">
+          <div class="container text-center bg-title">
+            <h2>Encontre produtos por categoria:</h2>
+            <p>Encontre o produto certo para cada momento da sua busca.</p>
+          </div>
+          <div class="mosaico-01 mosaico-banner-categ">
+            <a href="/categoria/pisos"><img src="~/assets/image/banners/pisos.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-02 mosaico-banner-categ">
+            <a href="/categoria/elementos-vasados"><img src="~/assets/image/banners/elementos-vasados.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-03 mosaico-banner-categ">
+            <a href="/categoria/metais"><img src="~/assets/image/banners/metais.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-04 mosaico-banner-categ">
+            <a href="/categoria/banheiras"><img src="~/assets/image/banners/banheiras.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-05 mosaico-banner-categ">
+            <a href="/categoria/revestimentos"><img src="~/assets/image/banners/revestimentos.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-06 mosaico-banner-categ">
+            <a href="/categoria/loucas"><img src="~/assets/image/banners/loucas.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-07 mosaico-banner-categ">
+            <a href="/categoria/acessorios"><img src="~/assets/image/banners/acessorios.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-08 mosaico-banner-categ">
+            <a href="/categoria/bancada-de-porcelanato"><img src="~/assets/image/banners/bancada-porcelanato.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-09 mosaico-banner-categ">
+            <a href="/categoria/metais"><img src="~/assets/image/banners/metais.jpg" class="img-responsive"></a>
+          </div>
+        </div>
+        </div>
+
+        <div class="container">
+           <div class="bloco-ambientes">
+          <div class="container text-center bg-title">
+            <h2>Ambientes</h2>
+            <p>Encontre produtos categorizados por ambiente.</p>
+          </div>
+          <div class="mosaico-a-01 mosaico-banner">
+            <a href="#"><img src="~/assets/image/banners/cozinhas.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-a-02 mosaico-banner">
+            <a href="#"><img src="~/assets/image/banners/banheiro.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-a-03 mosaico-banner">
+            <a href="#"><img src="~/assets/image/banners/sala.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-a-04 mosaico-banner">
+            <a href="#"><img src="~/assets/image/banners/area-externa.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-a-05 mosaico-banner">
+            <a href="#"><img src="~/assets/image/banners/piscina.jpg" class="img-responsive"></a>
+          </div>
+          <div class="mosaico-a-06 mosaico-banner">
+            <a href="#"><img src="~/assets/image/banners/quarto.jpg" class="img-responsive"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bloco-blog">
+        <div class="container">
+          <div class="container text-center bg-title">
+            <h2>Novidades, tendencias e muito mais!</h2>
+            <p>
+              Confira aqui em nosso <b>blog</b> conteudos exclusivos para voce.
+            </p>
+          </div>
+        </div>
+        <a href="#"><img src="~/assets/image/banners/blog.jpg" class="img-responsive"></a>
+      </div>
+
+      <div class="container">
+        <div class="bloco-marcas row">
+          <div class="col-md-3 pull-right">
+            <div class="container text-center bg-title">
+              <h2>Encontre o seu produto por Marcas</h2>
+              <p>
+                <br>
+                Aqui na TANTO voce encontra lancamentos e produtos exclusivos
+                das maiores marcas de Revestimentos, Pisos e Acessorios do mundo
+                todo.
+                <br><br>
+              </p>
+              <a href="#">TODAS AS MARCAS &gt;</a>
+            </div>   
+          </div>
+          <div class="col-md-9 brands-home">          
+            <a class="brand" href="#"><img src="~/assets/image/marcas/portinari.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/Doka.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/decortiles.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/revix.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/porcelanosa.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/color-mix.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/tarkett.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/gardenia.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/castelatto.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/duravit.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/rubinettos.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/hansgrohe.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/florim.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/deca.png" class="img-responsive"></a>
+            <a class="brand" href="#"><img src="~/assets/image/marcas/mosarte.png" class="img-responsive"></a>
+          </div>
+        </div>
+
+
+
+        <div class="bloco-lojas">
+          <div class="container text-center bg-title">
+            <h2>Saiba onde fica a loja TANTO mais proxima de voce</h2>
+          </div>
+          <div class="row">
+            <div class="col-md-4 loja">
+              <img src="~/assets/image/loja-barra.jpg" class="img-responsive">
+              <h3>Barra</h3>
+              <p>Casa Shopping, Bloco A, loja G</p>
+              <span class="loja-tel"><img src="~/assets/image/phone-icon.png"> (21) 3952-7604</span>   
+              <span class="loja-whats"><img  src="~/assets/image/whats-icon.png"> (21) 99760-2034</span>
+              <a target="_blank" href="https://goo.gl/maps/yMGeu4BHBKK2">Como Chegar</a>
+            </div>
+            <div class="col-md-4 loja">
+              <img src="~/assets/image/loja-leblon.jpg" class="img-responsive">
+              <h3>Leblon</h3>
+              <p>Gen Venancio Flores, 255, lojas B e C</p>
+              <span class="loja-tel"><img src="~/assets/image/phone-icon.png"> (21) 2511-1298</span>
+              <span class="loja-whats"><img src="~/assets/image/whats-icon.png"> (21) 967217963</span>
+              <a target="_blank" href="https://goo.gl/maps/DiZs9F5CmUp">Como Chegar</a>
+            </div>
+            <div class="col-md-4 loja">
+              <img src="~/assets/image/loja-guaratingueta.jpg" class="img-responsive">
+              <h3>Guaratingueta</h3>
+              <p>Av. Juscelino Kubitscheck de Oliveira, 957 - Vila Alves</p>
+              <span class="loja-tel"><img src="~/assets/image/phone-icon.png"> (21) 3976-9909</span>
+              <a target="_blank" href="https://goo.gl/maps/kBguXyKLNsz" >Como Chegar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

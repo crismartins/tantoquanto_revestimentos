@@ -2,7 +2,30 @@
 
 @foreach (var itemTitle in Model)
 {
-    <div class="column">
+    <div class="col-md-2 col-institucional">
+        <b>@itemTitle.Name </b>
+        @* <div class="ui inverted link list"> *@
+            <ul>
+            @foreach (var itemPage in itemTitle.CustomPagesContent)
+            {
+                <li><a href="/institucional/@itemTitle.IdCustomPage/@itemPage.IdCustomPageContent" class="item" title="@itemPage.Name">@itemPage.Name</a></li>
+            }
+            </ul>
+            <ul>
+            @if (@itemTitle.Name.ToUpper() == "DÚVIDAS")
+            {
+                <li><a href="@Url.Action("CommonQuestions", "Company")" class="item" title="Dúvidas Frequentes">Dúvidas Frequentes</a></li>
+            }
+            </ul>
+        @* </div> *@
+    </div>
+    
+}
+
+
+
+
+  @* <div class="column">
         <h4 class="ui inverted header">@itemTitle.Name <i class="ui icon chevron right mobile only"></i></h4>
         <div class="ui inverted link list">
             @foreach (var itemPage in itemTitle.CustomPagesContent)
@@ -14,5 +37,4 @@
                 <a href="@Url.Action("CommonQuestions", "Company")" class="item" title="Dúvidas Frequentes"><h5>Dúvidas Frequentes</h5></a>
             }
         </div>
-    </div>
-}
+    </div> *@

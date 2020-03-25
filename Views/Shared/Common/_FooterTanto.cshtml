@@ -63,11 +63,12 @@
              <img class="ui image" src="~/assets/image/selos/seguranca.png">
             <br /><br />
             <b>Meios de Pagamento:</b>
-            <img class="ui image" src="~/assets/image/selos/pagamento.png">
+            @Html.Partial("~/Views/Shared/Common/_Payments_List.cshtml")
+            @* <img class="ui image" src="~/assets/image/selos/pagamento.png"> *@
      <!--     <img src="~/assets/imagem/pagamento.png" class="img-responsive" />  -->
           </div>
           <div class="col-md-2">
-            <b>Sitemap</b>
+            <b>SITEMAP</b>
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">Produtos</a></li>
@@ -78,19 +79,10 @@
               <li><a href="#">Política de troca</a></li>
             </ul>
           </div>
-          <div class="col-md-2">
-            <b>Usuário</b>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Produtos</a></li>
-              <li><a href="#">Sobre Nós</a></li>
-              <li><a href="#">Notícias</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Empregos</a></li>
-              <li><a href="#">Política de troca</a></li>
-            </ul>
-          </div>
-          <div class="col-md-2">
+          
+          @Html.Action("CustomPages", "Home")
+          
+          @* <div class="col-md-2">
             <b>Sobre a Tanto</b>
             <ul>
               <li><a href="#">Home</a></li>
@@ -101,7 +93,7 @@
               <li><a href="#">Empregos</a></li>
               <li><a href="#">Política de troca</a></li>
             </ul>
-          </div>
+          </div> *@
           <div class="col-md-3"></div>
         </div>
       </div>
