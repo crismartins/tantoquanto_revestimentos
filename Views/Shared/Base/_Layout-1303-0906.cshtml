@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
-<head>
+<head>   
     @if (LojaCorp.Control.Company._Company.StatusGTM)
     {<!-- GoogleTagManager Common -->
         @Html.Action("GoogleTagManager", "Common", new { origin = ViewContext.RouteData.Values["controller"], action = ViewContext.RouteData.Values["action"] })
-     <!-- End GoogleTagManager Common -->
+        <!-- End GoogleTagManager Common -->
     }
 
     <!-- ~/Views/Shared/Common/_Header.cshtml -->
@@ -18,8 +18,8 @@
     <!-- Scripts -->
     @Html.Partial("Common/_CommonJs")
     @RenderSection("custom_js", required: false)
-    <script src='https://www.google.com/recaptcha/api.js'></script>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- Google Analytics -->
     @{
         if (!string.IsNullOrEmpty(LojaCorp.Control.Company._Company.IdAnalytics) && !LojaCorp.Control.Company._Company.StatusGTM)
@@ -39,6 +39,9 @@
         }
     }
     <!-- End Google Analytics -->
+
+
+
 </head>
 <body>
     @if (LojaCorp.Control.Company._Company.StatusGTM)
@@ -55,36 +58,34 @@
     @Html.Action("GetCartBySession", "Checkout")
 
     <div class="pusher">
-        @* <!-- ~/Views/Shared/Common/_TopBar.cshtml -->
-        @Html.Partial("Common/_TopBar") *@
-
-        @* <!-- ~/Views/Shared/Common/_Head.cshtml -->
-        @Html.Partial("Common/_Head") *@
+        <!-- ~/Views/Shared/Common/_TopBar.cshtml -->
+        <!-- @Html.Partial("Common/_TopBarTanto") -->
 
         <!-- ~/Views/Shared/Common/_Head.cshtml -->
         @Html.Partial("Common/_Head")
 
         <!-- ~/Views/Shared/Common/_Menu.cshtml -->
-        @Html.Action("Menu", "Home")
+             @Html.Action("Menu", "Home")
 
-        @RenderSection("breadcrumbs", required: true)
+        @RenderBody()
 
-        <div class="ui container-fluid margin bottom large">
-            <div class="ui grid">
-                <div class="row one column">
-                    <div class="column">
-                        @RenderSection("banner", required: false)
 
-                        @RenderBody()
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ~/Views/Shared/Common/_Footer.cshtml -->
-    @Html.Partial("Common/_FooterTanto")
     </div>
+
+    <!-- ~/Views/Shared/Common/_Footer.cshtml -->
+    @Html.Partial("Common/_Footer")
+
     @RenderSection("remarketing", required: false)
+
+
+    <div class="ui modal login">
+        <i class="close icon"></i>
+        <div class="header ui center aligned segment">Faça login ou cadastre-se para continuar</div>
+        <div class="description">
+            @Html.Action("LoginPartial", "Customer", new { _class = "modal-login", returnURL = "/Customer/AutoAddProductInWishListBeforeLogin?redirectToPage=/Home/Index" })
+        </div>
+    </div>
+
 
 </body>
 </html>

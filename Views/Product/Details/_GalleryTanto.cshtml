@@ -30,7 +30,7 @@
         });
     }
 </script>
-<div class="car-gallery thumbnails slick-dotted">
+
     @foreach (var item in Model)
     {
         <a href="@(item.ImageHighResolution != null ? item.ImageHighResolution : "#" )" data-standard="@item.ImageDefault">
@@ -38,5 +38,6 @@
             <img @*src="/assets/image/img_default.png" data-*@src="@item.ImageDefault" onerror="imgError(this)" class="ui image small centered"/>
         </a>
     }
-</div>
+
 <div class="ui divider hidden"></div>
+

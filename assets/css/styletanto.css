@@ -1032,6 +1032,8 @@ footer a {
 		margin-left: -4rem !important;
 		margin-right: 0rem !important;
 	}
+
+   
 /*************************************************/
 
 }
@@ -1092,3 +1094,57 @@ footer a {
 	}
 
 }
+
+/***************PAGINA PRODUTO*************************/
+
+h1.nomeProduto {
+    
+	font-size: 1.8rem !important;
+  
+}
+
+span.precoAntigo {
+    text-decoration: line-through;
+    font-size: 18px !important;
+    color: #6C6C6C !important;
+}
+
+.btnComprar .action {
+    display: inline-block;
+    background: #ff7d54;
+    color: #FFF !important;
+    text-decoration: none !important;
+    font-weight: bold;
+    line-height: 60px !important;
+    padding: 0 30px !important;
+    margin-top: 10px;
+}
+
+.blocoValores {
+    border-bottom: none !important;
+}
+
+.ui.attached.segment{
+	box-shadow: none !important;
+    border: none !important;
+}
+
+
+button#qtdminus-detalhes {
+    background: transparent !important;
+}
+
+button#qtdplus-detalhes {
+    color: #000000 !important;
+    background: none !important;
+}
+
+input#quantidade {
+    border: 1px solid #ddd !important;
+    width: 12vh !important;
+}
+
+
+
+
+/*********************************/

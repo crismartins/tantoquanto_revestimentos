@@ -1,0 +1,112 @@
+﻿@{
+    List<DomainSocialNetwork.Entities.SocialNetwork> redesSociais = Session["SocialNetworkLinks"] != null ? (List<DomainSocialNetwork.Entities.SocialNetwork>)Session["SocialNetworkLinks"] : new List<DomainSocialNetwork.Entities.SocialNetwork>();
+}
+
+@* <div class="bg-news"> *@
+      @* <div class="container"> *@
+        @* <div class="row">
+          <div class="col-md-8">
+            <p>
+              Cadastre-se na nossa newsletter e receba promoções e novidades:
+            </p>
+          </div>
+          <div class="col-md-4">
+            <input class="news-email" placeholder="Digite aqui o seu e-mail" />
+            <button class="news-btn">Eu quero!</button>
+          </div>
+        </div> *@
+
+        <div class="ui container fluid newsletter-bar">
+          <div class="ui container">
+              <div class="ui grid middle aligned">
+                  <div class="row stackable">
+                      <div class="column">
+                          <div class="ui form">
+                              <div class="inline fields margin none">
+                                  @* <div class="field">
+                                      <span>
+                                          <i class="icon envelope"></i>
+                                          <h4 class="header">Newsletter</h4>
+                                      </span>
+                                  </div> *@
+                                  <div class="field textNews">
+                                      <span class="text">
+                                          Cadastre-se na nossa newsletter e receba promoções e novidades:
+                                      </span>
+                                  </div>
+                                  <div class="field">
+                                      <div class="ui left icon input">
+                                          @* <i class="mail icon"></i> *@
+                                          <input type="text" placeholder="Digite aqui o seu e-mail" id="email_news">
+                                      </div>
+                                  </div>
+                                  <div class="field">
+                                      <button class="ui button red" id="btn_news">
+                                          Eu quero !
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>  
+   
+    
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <b>Site Seguro:</b>
+      <!--   <img src="/assets/imagem/seguranca.png" class="img-responsive" /> -->
+             <img class="ui image" src="~/assets/image/selos/seguranca.png">
+            <br /><br />
+            <b>Meios de Pagamento:</b>
+            <img class="ui image" src="~/assets/image/selos/pagamento.png">
+     <!--     <img src="~/assets/imagem/pagamento.png" class="img-responsive" />  -->
+          </div>
+          <div class="col-md-2">
+            <b>Sitemap</b>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Produtos</a></li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Notícias</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Empregos</a></li>
+              <li><a href="#">Política de troca</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <b>Usuário</b>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Produtos</a></li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Notícias</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Empregos</a></li>
+              <li><a href="#">Política de troca</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <b>Sobre a Tanto</b>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Produtos</a></li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Notícias</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Empregos</a></li>
+              <li><a href="#">Política de troca</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </footer>
+
+
+
+
