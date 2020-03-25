@@ -184,7 +184,7 @@
                                     </div>
                                     <h4 class="ui dividing header">Crie sua conta</h4>
 
-                                    @*<div class="fields">*@
+                                    <div class="two fields">
                                         <div class="field required">
                                             <label>E-mail</label>
                                             <div class="ui left icon input">
@@ -193,7 +193,7 @@
                                                        value="@(string.IsNullOrEmpty((string)Session["Email"]) ? @Html.Raw("") : @Html.Raw((string)Session["Email"]))" data-validate="email">
                                             </div>
                                         </div>
-                                        @*<div class="field required">
+                                        <div class="field required">
                                             <label>Senha</label>
                                             <div class="ui right action left icon input">
                                                 <i class="lock icon"></i>
@@ -203,9 +203,9 @@
                                                     <i class="unhide icon"></i>
                                                 </div>
                                             </div>
-                                        </div>*@
-                                    @*</div>*@
-                                    @*<div class="field">
+                                        </div>
+                                    </div>
+                                    <div class="field">
                                         <label>Selecione as categorias que deseja receber por e-mail.</label>
                                     </div>
                                     <input type="hidden" name="categories_selected" id="categories_selected" value="" />
@@ -226,7 +226,7 @@
                                                 }
                                             }
                                         }
-                                    </div>*@
+                                    </div>
 
                                 </div>
                             </div>
@@ -473,7 +473,27 @@
                 window.location.href = "/assistedsale/index";
             });
         }
-        else {           
+        else {
+            var googleRecaptchaVersion = "";
+
+            if ($('#googleVersion').length > 0) {
+                googleRecaptchaVersion = $('#googleVersion').val();
+            }
+
+            if (googleRecaptchaVersion == '2') {
+                $("#googleResponse").val('');
+                grecaptcha.reset();
+            } else {
+                var googleSiteKey = $('#googleSiteKey').val();
+                $.ajaxSetup({ async: false });
+                $.getScript("https://www.google.com/recaptcha/api.js?render=" + googleSiteKey, function () {
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute(googleSiteKey, { action: 'Register' }).then(function (token) {
+                            $("#googleResponse").val(token);
+                        });
+                    });
+                });
+            }
 
             swal({
                 title: '',
@@ -488,9 +508,27 @@
     }
 
     function OnFailure(response) {
+        var googleRecaptchaVersion = "";
+
+        if ($('#googleVersion').length > 0) {
+            googleRecaptchaVersion = $('#googleVersion').val();
+        }
 
         if (response.Success == false) {
-            
+            if (googleRecaptchaVersion == '2') {
+                $("#googleResponse").val('');
+                grecaptcha.reset();
+            } else {
+                var googleSiteKey = $('#googleSiteKey').val();
+                $.ajaxSetup({ async: false });
+                $.getScript("https://www.google.com/recaptcha/api.js?render=" + googleSiteKey, function () {
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute(googleSiteKey, { action: 'Register' }).then(function (token) {
+                            $("#googleResponse").val(token);
+                        });
+                    });
+                });
+            }
 
             swal({
                 title: '',

@@ -1,6 +1,6 @@
 ﻿@model List<DomainProduct.Entities.Category>
 
-<div class="ui container fluid menuheader">
+<div id ="menu-head" class="ui container fluid menuheader" style="display: none;">
   <div class="overlapblackbg"></div>
   <div class="ui container">
     <div class="wsmobileheader clearfix">
@@ -8,7 +8,7 @@
     </div>
     <div class="wsmain">
       <nav class="wsmenu">
-        <div class="ui mobile only titleMenu"><i class="content icon"></i> MENU</div>
+        <div class="ui mobile only titleMenu"><i class="content icon"></i> MENUU</div>
         <ul class="mobile-sub wsmenu-list ui menu">
           @foreach (DomainProduct.Entities.Category category in Model)
           {
@@ -80,9 +80,14 @@
             {
               <li>
                 <a class="item" href="~/category/index/@category.IdCategory" title="@category.Name"><span>@category.Name</span></a>
-              </li>
+              </li>          
             }
           }
+              <li>
+                 <a href="/customer" title="Area do Cliente">
+                    <span>Area do Cliente</span>
+                  </a>
+              </li>
         </ul>
       </nav>
     </div>

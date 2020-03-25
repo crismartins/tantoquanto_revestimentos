@@ -11,8 +11,8 @@
     @Html.Partial("Common/_Header")
     @RenderSection("CustomSeo", required: false)
 
-    <!-- CSS Styles -->
-    @Html.Partial("Common/_CommonCss")
+   <!-- CSS Styles -->
+    @Html.Partial("Common/_CommonCssTanto")
     @RenderSection("custom_css", required: false)
 
     <!-- Scripts -->
@@ -101,7 +101,7 @@
 
         <div class="ui container fluid footer-wrap no-p">
             <!-- ~/Views/Shared/Common/_Footer_Checkout.cshtml -->
-            @*@Html.Partial("Common/_Footer_Checkout")*@
+            @Html.Partial("Common/_Footer_Checkout")
         </div>
     </div>
     @RenderSection("remarketing", required: false)

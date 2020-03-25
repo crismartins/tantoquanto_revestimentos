@@ -1,6 +1,6 @@
 ﻿@model DomainProduct.Filters
 <div class="column" id="filter">
-    <div class="ui labels containerFilter">
+    <div class="ui labels">
 
     </div>
     <div class="four wide column filtros" id="filtros">
@@ -16,25 +16,19 @@
                 </div>
                 <div class="column">
                     <div class="ui accordion" id="filtroList">
-                        @if (Model.GroupingTypes != null && Model.GroupingTypes.Count() > 0)
-                        {
-                            <!-- Page: ~/Views/Shared/Blocks/Product/_GroupingTypesFilters.cshtml -->
-                            @Html.Partial("~/Views/Shared/Blocks/Product/_GroupingTypesFilters.cshtml", Model.GroupingTypes)
-                        }
-
                         @if (Model.References != null && Model.References.Count() > 0)
                         {
                             <!-- Page: ~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml -->
                             @Html.Partial("~/Views/Shared/Blocks/Product/_ReferencesFilters.cshtml", Model.References)
                         }
 
-                        @if (Model.Brands != null && Model.Brands.Count() > 1)
+                        @if (Model.Brands != null && Model.Brands.Count() > 0)
                         {
                             <!-- Page: ~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml -->
                             @Html.Partial("~/Views/Shared/Blocks/Brand/_BrandsFilters.cshtml", Model.Brands)
                         }
 
-                        @if (Model.Categories != null && Model.Categories.Count() > 1)
+                        @if (Model.Categories != null && Model.Categories.Count() > 0)
                         {
                             <!-- Page: ~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml -->
                             @Html.Partial("~/Views/Shared/Blocks/Category/_CategoriesFilters.cshtml", Model.Categories)

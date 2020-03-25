@@ -56,8 +56,8 @@
     @Html.Action("GetCartBySession", "Checkout")
     
     <div class="pusher">
-        <!-- ~/Views/Shared/Common/_TopBar.cshtml -->
-        @Html.Partial("Common/_TopBar")
+        @* <!-- ~/Views/Shared/Common/_TopBar.cshtml --> *@
+        @* @Html.Partial("Common/_TopBar") *@
 
         <!-- ~/Views/Shared/Common/_Head.cshtml -->
         @Html.Partial("Common/_Head")
@@ -82,7 +82,7 @@
             </div>
         </div>
         <!-- ~/Views/Shared/Common/_Footer.cshtml -->
-        @Html.Partial("Common/_Footer")
+    @Html.Partial("Common/_FooterTanto")
     </div>
 
     @RenderSection("remarketing", required: false)

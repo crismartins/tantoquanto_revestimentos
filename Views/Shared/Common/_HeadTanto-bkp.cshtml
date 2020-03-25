@@ -1,0 +1,44 @@
+﻿@{
+  string _classSearch = Session["idEventList"] == null ? "search" : "filterListEventsProducts";
+  string _classMiniCart = Session["idEventList"] == null && Session["EventList"] == null ? "mini-cart" : "mini-cart-list-event";
+}
+
+
+
+<header>
+    <div class="header-content container">
+        <div class="row">
+            <div class="col-xs-3 visible-xs links-header">
+                <a href="#">MENU</a>
+            </div>
+            <div class="col-xs-6 col-md-2 logo">
+                <a href="/Home" title="Página Inicial">
+                    <img src="/assets/image/logo/logo.png" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName"/>
+                </a>
+            </div>
+            <div class="col-xs-3 visible-xs text-right links-header">
+                <a href="#" class="btn-cart"><span class="count-itens">0</span><img src="/assets/image/bag.png"/></a>
+            </div>
+            <div class="col-md-8 search searchcolumn">
+                <div class="ui category search">
+            <div class="ui icon input fluid">
+              <input class="prompt" type="text" placeholder="Buscar..." autocomplete="off">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+
+
+               <!-- <div class="ui category Search">
+                    <input class="prompt search-text" placeholder="Buscar..." /><input class="search-btn" />
+                </div> -->
+                <div class="results"></div>
+            </div>
+            <div class="col-md-2 text-right links-header hidden-xs">
+                <a href="#"><img src="/assets/image/account.png"/></a>
+                <a href="#" class="btn-cart"><span class="count-itens">0</span><img src="/assets/image/bag.png"/></a>
+                <a href="#">MENU</a>
+            </div>
+        </div>
+    </div>
+</header>

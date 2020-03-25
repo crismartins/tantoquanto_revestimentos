@@ -138,11 +138,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="column text right">
-                                @Html.Action("GetRecaptchaV3", "Company", new { Module = "Contact" })
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="column">
                                 <a href="/Home" class="ui animated button large basic left floated form_refresh">
                                     <div class="visible content">Voltar</div>
@@ -170,10 +165,9 @@
 @section custom_js {
     <script>
         function onSuccess(response) {
-             
             if (response.success == true) {
                 swal({                 
-                    text: response.Message,
+                    text: response.message,
                     type: 'success',
                     showCancelButton: false,
                     confirmButtonColor: '#16ab39',
@@ -184,9 +178,8 @@
                 });
             }
             else {
-
                 swal({                    
-                    text: response.Message,
+                    text: response.message,
                     type: 'warning',
                     showCancelButton: false,
                     confirmButtonColor: '#16ab39',
@@ -197,10 +190,9 @@
         }
 
         function onFailure(response) {
-             if (response.success == false) {               
-
+            if (response.success == false) {
                 swal({
-                    text: response.Message,
+                    text: response.message,
                     type: 'error',
                     showCancelButton: false,
                     confirmButtonColor: '#16ab39',

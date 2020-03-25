@@ -3,12 +3,14 @@
 @if (Model.Products != null && Model.Products.Any())
 {
     <div class="ui container topsellers no-slideshow">
-
-        <div class="ui horizontal divider">
-            Em Destaque
+        <div class="container text-center bg-title">          
+            <h2>Produtos mais desejados</h2>
+            <p>Confira a lista com os 8 mais queridinhos desse mês!</p>        
         </div>
         <!-- Page: ~/Views/Shared/Blocks/Product/_ProductList.cshtml -->
         @Html.Partial("~/Views/Shared/Blocks/Product/_ProductList.cshtml", Model.Products)
-
     </div>
 }
+
+
+ 

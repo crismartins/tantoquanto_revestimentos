@@ -12,13 +12,14 @@
     @RenderSection("CustomSeo", required: false)
 
     <!-- CSS Styles -->
-    @Html.Partial("Common/_CommonCss")
+    @Html.Partial("Common/_CommonCssTanto")
     @RenderSection("custom_css", required: false)
 
     <!-- Scripts -->
     @Html.Partial("Common/_CommonJs")
     @RenderSection("custom_js", required: false)
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- Google Analytics -->
     @{
         if (!string.IsNullOrEmpty(LojaCorp.Control.Company._Company.IdAnalytics) && !LojaCorp.Control.Company._Company.StatusGTM)
@@ -55,25 +56,25 @@
 
     <div class="pusher">
         <!-- ~/Views/Shared/Common/_TopBar.cshtml -->
-        @Html.Partial("Common/_TopBar")
+        <!-- @Html.Partial("Common/_TopBarTanto") -->
 
         <!-- ~/Views/Shared/Common/_Head.cshtml -->
         @Html.Partial("Common/_Head")
 
         <!-- ~/Views/Shared/Common/_Menu.cshtml -->
-        @Html.Action("Menu", "Home")
+             @Html.Action("Menu", "Home")
 
         @RenderBody()
 
-        <!-- ~/Views/Shared/Common/_Footer.cshtml -->
-        @Html.Partial("Common/_Footer")
+
     </div>
+
+    <!-- ~/Views/Shared/Common/_Footer.cshtml -->
+    @Html.Partial("Common/_FooterTanto")
 
     @RenderSection("remarketing", required: false)
 
 
-@if (Session["UserAuthenticated"] == null && Session["Seller"] == null)
-{
     <div class="ui modal login">
         <i class="close icon"></i>
         <div class="header ui center aligned segment">Faça login ou cadastre-se para continuar</div>
@@ -81,7 +82,6 @@
             @Html.Action("LoginPartial", "Customer", new { _class = "modal-login", returnURL = "/Customer/AutoAddProductInWishListBeforeLogin?redirectToPage=/Home/Index" })
         </div>
     </div>
-}
 
 
 </body>

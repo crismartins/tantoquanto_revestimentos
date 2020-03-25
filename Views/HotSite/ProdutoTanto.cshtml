@@ -1,0 +1,351 @@
+﻿@{
+    ViewBag.Title = string.IsNullOrEmpty(LojaCorp.Control.Company._Company.Title) ? LojaCorp.Control.Company._Company.NameStore : LojaCorp.Control.Company._Company.Title;
+    Layout = "~/Views/Shared/Base/_LayoutTanto.cshtml";
+}
+
+<!-- ~/Views/Shared/Blocks/Banner/_FullBanner.cshtml -->
+<!-- ############ BANNER  @Html.Action("FullBanner", "Banner") -->
+
+<!-- ~/Views/Shared/Blocks/_InfoBar.cshtml -->
+<!-- @Html.Partial("Blocks/_InfoBar") -->
+
+<body>
+<div class="container">
+<div id="produto">
+    <div class="container">
+      <div class="breadcrumbs">
+        <ul class="list-inline">
+          <li>Início ></li>
+          <li>Pisos ></li>
+          <li><b> Cimentícios e Naturais</b></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-7 prod-foto">
+          <div class="pull-right prod-img">
+            <img src="~/assets/image/prod.jpg" class="img-responsive" />
+          </div>
+
+          <div class="thumbs pull-left">
+            <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+            <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+            <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+          </div>
+        </div>
+
+        <div class="col-md-5 prod-infos">
+          <span class="sku">SKU: 388751</span>
+          <h1 class="prod-name">Black Lavastone - Hitam Lisa 10x10cm</h1>
+          <span class="flag flag-verde">festival de pisos</span>
+          <span class="flag flag-azul">Últimas Peças</span>
+          <div class="price-box row">
+            <div class="col-xs-8">
+              <p class="preco-de">R$121,30</p>
+              <p class="preco-por">R$109,00</p>
+            </div>
+            <div class="col-xs-4 prod-qtd">
+              <label>Qtd. por M2</label><br>
+              <a href="#" class="menos"><i class="fa fa-minus" aria-hidden="true"></i></a>
+              <input class="qtd">
+              <a href="#" class="mais"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <span class="obs"><b>Unidade mínima de compra:</b> 2,50 m² (1 caixa)</span>
+          <div class="atributo-cor">
+            Selecione a cor
+          </div>
+          <a href="#" class="btn-buy">ADICIONAR AO CARRINHO</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="promo-icons">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <img src="~/assets/image/frete-gratis.png" />
+            <b>Frete Gratis Para todo o Brasil</b>
+            <span>Para compras com valor acima de R$400</span>
+          </div>
+          <div class="col-md-3">
+            <img src="~/assets/image/cartao.png" />
+            <b>pague em até 12x sem juros</b>
+            <span>Para compras com valor acima de R$400</span>
+          </div>
+          <div class="col-md-3">
+            <img src="~/assets/image/retire-na-loja.png" />
+            <b>Compra no site, retire na loja!</b>
+            <span>Aproveite a facilidade retirar seus produtos em uma de nossas lojas</span>
+          </div>
+          <div class="col-md-3">
+            <img src="~/assets/image/agende-sua-entrega.png" />
+            <b>Agende a sua entrega</b>
+            <span>Tem uma agenda apertada? Sem problemas! agende um dia exato para receber os seus produtos.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="especificacoes">
+        <h3 class="title-esp">Informações Técnicas</h3>
+        <table class="tabela-esp">
+          <tr>
+            <td><b>Cor</b></td>
+            <td>Branco</td>
+          </tr>
+          <tr>
+            <td><b>Superficie</b></td>
+            <td>Acetinado, polído ou resistente ao escorregamento</td>
+          </tr>
+          <tr>
+            <td><b>Formato</b></td>
+            <td>5959cm</td>
+          </tr>
+          <tr>
+            <td><b>Espessura</b></td>
+            <td>9,5mm</td>
+          </tr>
+          <tr>
+            <td><b>Categoria</b></td>
+            <td>Porcelanato Esmaltado</td>
+          </tr>
+          <tr>
+            <td><b>Junta de Assentamento</b></td>
+            <td>2mm</td>
+          </tr>
+          <tr>
+            <td><b>Local de uso</b></td>
+            <td>LD: Ambientes residenciais e comerciais com e sem acesso para rua, como banheiros, salas, quartos,
+              cozinhas, garagens e varandas.</td>
+          </tr>
+          <tr>
+            <td><b>Acabamento</b></td>
+            <td>Produto retificado</td>
+          </tr>
+          <tr>
+            <td><b>Tamanho de fabricação (mm)</b></td>
+            <td>590x590</td>
+          </tr>
+          <tr>
+            <td><b>Coeficiente de atrito</b></td>
+            <td>I</td>
+          </tr>
+          <tr>
+            <td><b>Peças por caixa:</b></td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td><b>M² por caixa:</b></td>
+            <td>1,39</td>
+          </tr>
+          <tr>
+            <td><b>Variação de tonalidade:</b></td>
+            <td>V2: Leve - Diferenças claramente distinguíveis na textura e/ou no padrão das cores similares</td>
+          </tr>
+        </table>
+      </div>
+      <div class="calculadora-tamanhos">
+        <h3 class="title-esp">Calculadora de Tamanhos</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <p>Use this calculator to determine the square or linear footage of your space. Many of our patterns cover
+              amounts greater or less than one square or linear foot per piece, so check in with us to determine exactly
+              how many you need, or round up using the formulas below. </p>
+            <h3>PAGINAÇÕES ESPECIAIS</h3>
+            <p>Add 15% Overage – Recommended minimum for most field tile installations.<br>
+              Add 20% Overage – Recommended minimum for complex field tile layouts and basic mosaic installations.<br>
+              Add 30% Overage – Recommended minimum for complex mosaic patterns and Waterjet installations.</p>
+          </div>
+          <div class="col-md-6">
+            <div class="calculadora">
+              <h4>Digite aqui a largura e a altura do seu espaço:</h4>
+              <div class="row">
+                <div class="col-xs-4">
+                  <span>Altura</span>
+                  <a href="#" class="menos"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                  <input class="qtd">
+                  <a href="#" class="mais"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                </div>
+                <div class="col-xs-4">
+                  <span>Comprimento</span>
+                  <a href="#" class="menos"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                  <input class="qtd">
+                  <a href="#" class="mais"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                </div>
+                <div class="col-xs-4">
+                  <button>CALCULAR</button>
+                </div>
+                <div class="col-xs-12">
+                  <div class="resultado-calculadora">
+                    <span>O seu espaço mede 144m2.</span>
+                    <p>Você vai precisar de 4 caixas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="compre-junto">
+        <h3 class="title-rel">Aproveite e compre junto</h3>
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+            <div class="prod-box">
+              <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+              <div class="prod-box-infos">
+                <h3>Black Lavastone - Hitam Lisa 10x10cm</h3>
+                <span class="brand">Colormix</span>
+                <div class="prod-price">
+                  <span class="old-price">R$ 121,30</span>
+                  <p class="price">R$ 109,00</p>
+                </div>
+                <a class="pull-left add-to-cart" href="#">add ao carrinho</a>
+                <a href="#" class="pull-right fav-link"><img src="~/assets/image/fav-icon.png" /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-1 text-center">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </div>
+          <div class="col-xs-12 col-md-5">
+            <div class="prod-compre-junto">
+              <img src="~/assets/image/prod-vitrine.jpg" />
+              <div class="prod-compre-junto-infos">
+                <h3>Black Lavastone - Hitam Lisa</h3>
+                <span class="medidas">10x10cm</span>
+                <span class="old-price">R$ 121,30</span>
+                <p class="price">R$ 109,00</p>
+              </div>
+            </div>
+            <label class="container-check">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <div class="prod-compre-junto">
+              <img src="~/assets/image/prod-vitrine.jpg" />
+              <div class="prod-compre-junto-infos">
+                <h3>Black Lavastone - Hitam Lisa</h3>
+                <span class="medidas">10x10cm</span>
+                <span class="old-price">R$ 121,30</span>
+                <p class="price">R$ 109,00</p>
+              </div>
+            </div>
+            <label class="container-check">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            <div class="prod-compre-junto">
+              <img src="~/assets/image/prod-vitrine.jpg" />
+              <div class="prod-compre-junto-infos">
+                <h3>Black Lavastone - Hitam Lisa</h3>
+                <span class="medidas">10x10cm</span>
+                <span class="old-price">R$ 121,30</span>
+                <p class="price">R$ 109,00</p>
+              </div>
+            </div>
+            <label class="container-check">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-xs-12 col-md-3 text-center">
+            <p><b>3 Produtos selecionados</b></p>
+            <span class="old-price">R$363,90</span>
+            <p class="price">R$327,00</p>
+            <a class="btn-compre-junto" href="#">COMPRAR AGORA</a>
+            <b>Economize R$ 36,90</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-relacionados">
+        <h3 class="title-rel">Produtos relacionados</h3>
+        <div class="row">
+          <div class="col-xs-6 col-md-3">
+            <div class="prod-box">
+              <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+              <div class="prod-box-infos">
+                <h3>Black Lavastone - Hitam Lisa 10x10cm</h3>
+                <span class="brand">Colormix</span>
+                <div class="prod-price">
+                  <span class="old-price">R$ 121,30</span>
+                  <p class="price">R$ 109,00</p>
+                </div>
+                <a class="pull-left add-to-cart" href="#">add ao carrinho</a>
+                <a href="#" class="pull-right fav-link"><img src="~/assets/image/fav-icon.png" /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <div class="prod-box">
+              <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+              <div class="prod-box-infos">
+                <h3>Black Lavastone - Hitam Lisa 10x10cm</h3>
+                <span class="brand">Colormix</span>
+                <div class="prod-price">
+                  <span class="old-price">R$ 121,30</span>
+                  <p class="price">R$ 109,00</p>
+                </div>
+                <a class="pull-left add-to-cart" href="#">add ao carrinho</a>
+                <a href="#" class="pull-right fav-link"><img src="~/assets/image/fav-icon.png" /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <div class="prod-box">
+              <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+              <div class="prod-box-infos">
+                <h3>Black Lavastone - Hitam Lisa 10x10cm</h3>
+                <span class="brand">Colormix</span>
+                <div class="prod-price">
+                  <span class="old-price">R$ 121,30</span>
+                  <p class="price">R$ 109,00</p>
+                </div>
+                <a class="pull-left add-to-cart" href="#">add ao carrinho</a>
+                <a href="#" class="pull-right fav-link"><img src="~/assets/image/fav-icon.png" /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <div class="prod-box">
+              <img src="~/assets/image/prod-vitrine.jpg" class="img-responsive" />
+              <div class="prod-box-infos">
+                <h3>Black Lavastone - Hitam Lisa 10x10cm</h3>
+                <span class="brand">Colormix</span>
+                <div class="prod-price">
+                  <span class="old-price">R$ 121,30</span>
+                  <p class="price">R$ 109,00</p>
+                </div>
+                <a class="pull-left add-to-cart" href="#">add ao carrinho</a>
+                <a href="#" class="pull-right fav-link"><img src="~/assets/image/fav-icon.png" /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  </body>
+
+<div class="featuredProducts">
+    <!-- ~/Views/Shared/Blocks/Product/_FeaturedProducts.cshtml -->
+    @Html.Action("FeaturedProducts", "Product")
+</div>
+
+<!-- ~/Views/Shared/Blocks/_CentralHalfBanner.cshtml -->
+@Html.Action("CentralHalfBanner", "Banner")
+
+<!-- ~/Views/Shared/Blocks/Group/_Groups.cshtml -->
+@Html.Action("Group", "Group")
+
+<!-- ~/Views/Shared/Blocks/_TopSellers.cshtml -->
+@Html.Action("TopSellers", "Product")
+
+<!-- ~/Views/Shared/Blocks/Banner/_FooterHalfBanner.cshtml -->
+@Html.Action("FooterHalfBanner", "Banner")
+
+<!-- ~/Views/Shared/Blocks/Brand/_Brands.cshtml -->
+@Html.Action("Brand", "Product")
