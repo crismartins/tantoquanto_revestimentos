@@ -10,68 +10,104 @@
 }
 
 
-<div class="ui container">
-    <div class="ui horizontal divider">
-        Compre Junto 2
+<div class="container">
+    <div class="bg-title">
+        <h2>
+        Aproveite e compre junto
+        </h2>
     </div>
-    <div class="ui grid stackable">
-        <div class="row horizontal divided">
-            <div class="twelve wide computer column">
-                <div class="ui items relaxed divided produtos compre junto">
-                    <div class="item product-grid">
-                        <div class="ui image medium">
-                            @if (@Model.ImageHome != null)
-                            {
-                                <img src="@Model.ImageHome" alt="@Model.Name"  onerror="imgError(this)">
-                            }
-                            else
-                            {
-                                <img src="@Model.ProductImages.FirstOrDefault().ImageDefault" alt="@Model.Name"  onerror="imgError(this)">
-                            }
-                        </div>
+        <div class="ui grid stackable horizontal">
+            <div class=" five wide column">
+                <div class="ui items produtos compre junto">
+
+                    <div class="ui card produto product-in-card">
+  
                         <div class="content">
-                            <a href="" class="header">@Model.Name</a>
-                            <div class="meta">
-                                @if (@Model.Brand != null)
-                                {
-                                    <span>@Model.Brand.Name</span>
-                                }
-                                <h4 class="margin small top" id="price-buy-together">
-                                    @if (Model.HaveSku)
-                                    {
-                                        if (SKUPadrao.PricePromotion != null && SKUPadrao.PricePromotion > 0)
-                                        {
-                                            @SKUPadrao.PricePromotion.Value.ToString("C")
-                                        }
-                                        else
-                                        {
-                                            @SKUPadrao.Price.ToString("C")
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (Model.PricePromotion != null && Model.PricePromotion > 0)
-                                        {
-                                            @Model.PricePromotion.Value.ToString("C")
-                                        }
-                                        else
-                                        {
-                                            @Model.Price.ToString("C")
-                                        }
-                                    }
-                                </h4>
+                        <div class="image-container">
+    
+                            <div class="ui image fluid">
+                                @if (@Model.ImageHome != null)
+                                                    {
+                                                        <img src="@Model.ImageHome" alt="@Model.Name"  onerror="imgError(this)">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="@Model.ProductImages.FirstOrDefault().ImageDefault" alt="@Model.Name"  onerror="imgError(this)">
+                                                    }
                             </div>
-                            <div class="description">
-                                @if (Model.AvailableReferences != null)
-                                {
-                                    @Html.Action("Variations", "Product", new { reference = @Model.AvailableReferences, skuPadrao = @SKUPadrao })
-                                }
+
+                        </div>
+
+                        <div class="content-info">
+
+      
+                            <div class="dados ui grid">
+                                <div class="eight wide column">
+                                    <h3>
+                                        <span itemprop="name">
+                                        @Model.Name
+                                        </span>
+                                    </h3>
+                                    @if (@Model.Brand != null)
+                                        {
+                                            <h5 itemprop="productBrand" class="marcaProduto">@Model.Brand.Name</h5>
+                                        }
+                                </div>
+        
+                                <div class="eight wide column" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                <meta itemprop="priceCurrency" content="BRL" />
+          @if (Model.PricePromotion != null && Model.PricePromotion > 0)
+          {
+            <span id="basePrice_@Model.IdProduct" class="precoBase"> <i>@string.Format("{0:c}", Model.Price)</i> por @(Session["segment"] != null && Session["segment"].ToString() == "b2b" && Model.AvailableReferences != null ? "a partir de" : string.Empty)</span>
+            <span class="preco">R$ <span itemprop="price">@string.Format("{0:n2}", Model.PricePromotion)</span></span>
+
+          }
+          else
+          {
+            <span id="price_@Model.IdProduct" class="preco" itemprop="price">
+              <span class="precoBase">
+                @(Session["segment"] != null && Session["segment"].ToString() == "b2b" && Model.AvailableReferences != null ? "a partir de" : string.Empty)
+              </span>
+              R$ @string.Format("{0:n2}", Model.Price)
+            </span>
+          }
+          @if (Model.InstallmentMax != null)
+          {
+            <span class="parcelamento">
+              ou em <span class="installmentMaxNumber">@Model.InstallmentMax.MaxNumber</span>
+              x de <span class="installmentMaxValue">@string.Format("{0:c}", Model.InstallmentMax.Value)</span>
+            </span>
+          }
+
+          @if (Model.Stock >= 0 && !Model.FlagExhausted)
+          {
+            <br /><br />
+            <span class="text color grey regular parcelamento small">
+              @Model.DescriptionAvailabilityStatus
+            </span>
+          }
+
+          @if (!Model.FlagExhausted)
+          {
+            <link itemprop="availability" href="http://schema.org/InStock" content="disponível" />
+          }
+          else
+          {
+            <link itemprop="availability" href="http://schema.org/SoldOut" content="esgotado" />
+          }
+
+                                </div>
                             </div>
-                            <div class="extra"></div>
+      
                         </div>
                     </div>
 
-                    <input type="hidden" value="" name="buy-together-skus" id="buy-together-skus" />
+                </div>
+                    
+                </div>
+            </div>
+            <div class="seven wide column">
+            
 
                     @foreach (var item in Model.BuyTogether)
                     {
@@ -106,47 +142,56 @@
                         }
 
                         int total_variacoes = item.AvailableReferences != null ? item.AvailableReferences.Count() : 0;
-
-                        <div class="item buy-together" id="buy-together" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
-                            <div class="ui image small">
-                                <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)">
-                                    <img src="@item.ImageHome" alt=""  onerror="imgError(this)">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)" class="header">@item.Name</a>
-                                <div class="meta">
-                                    @if (@Model.Brand != null)
-                                    {
-                                        <span>@Model.Brand.Name</span>
-                                    }
-                                    else
-                                    {
-                                        <span></span>
-                                    }
-                                    @{
-                                        decimal preco_final = item.PricePromotion != null ? Convert.ToDecimal(item.PricePromotion) : item.Price;
-                                    }
-
-                                    @if (item.AvailableReferences == null || item.AvailableReferences.Count() == 0)
-                                    {
-                                        <h4 class="margin small top" id="@item.IdProduct-price-product-buy-together">@preco_final.ToString("C")</h4>
-                                    }
-                                    else
-                                    {
-                                        <h4 class="margin small top" id="@item.IdProduct-price-product-buy-together"></h4>
-                                    }
+                        
+                    <div class="ui grid buy-together " id="buy-together" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
+                        <div class="twelve wide container column ui card produto wide product-in-card item ">
+                        
+                            <div class="ui grid content">
+                                <div class="ui image small column five wide">
+                                    <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)">
+                                        <img src="@item.ImageHome" alt=""  onerror="imgError(this)">
+                                    </a>
                                 </div>
-                                <div class="description" data-id="@item.IdProduct" data-variacoes="@total_variacoes">
-                                    @if (@item.AvailableReferences != null)
-                                    {
-                                        @Html.Action("Variations", "Product", new { reference = @item.AvailableReferences, ListaSku = @item.SKUs })
-                                    }
+                                <div class="content-info column ten wide content-minicard">
+                                    
+                                    <div class="dados">
+
+                                        <a href="@(item.UrlFriendlyCustom != null ? item.UrlFriendlyCustom : item.UrlFriendly)" class="header">
+                                        <h4 class="title">@item.Name</h4>
+                                        </a>
+                                        <!-- @if (@Model.Brand != null)
+                                        {
+                                            <span>@Model.Brand.Name</span>
+                                        }
+                                        else
+                                        {
+                                            <span></span>
+                                        } -->
+                                        
+
+                                        @{
+                                            decimal preco_final = item.PricePromotion != null ? Convert.ToDecimal(item.PricePromotion) : item.Price;
+                                        }
+
+                                        @if (item.AvailableReferences == null || item.AvailableReferences.Count() == 0)
+                                        {
+                                            <span id="@item.IdProduct-price-product-buy-together" class="preco">@preco_final.ToString("C")</span>
+                                        }
+                                        else
+                                        {
+                                        <span id="@item.IdProduct-price-product-buy-together" class="preco"></span>
+                                        }
+                                    </div>
+                                    
                                 </div>
                             </div>
-                            <div class="extra">
-                                <button class="ui circular icon big toggle button compre junto primary" data-id="@item.IdProduct" data-variacoes="@total_variacoes" id="adicionar-compre-junto-@item.IdProduct">
-                                    <i class="plus icon"></i>
+                        </div>
+
+                            <div class="four wide column extra">
+                                <input type="hidden" value="" name="buy-together-skus" id="buy-together-skus" />
+
+                                <button class="ui icon big toggle button compre junto primary" data-id="@item.IdProduct" data-variacoes="@total_variacoes" id="adicionar-compre-junto-@item.IdProduct">
+                                    <!--<i class="plus icon"></i>-->
                                 </button>
                             </div>
 
@@ -172,18 +217,17 @@
                             <input type="hidden" name="@item.IdProduct-buy-together-referencias-selecionadas" id="@item.IdProduct-buy-together-referencias-selecionadas" value="@variacaoSelecionada" class="compre-junto-variacao-selecionada" />
                             <!-- FIM VARIÁVEIS PRODUTO - COMPRE JUNTO-->
 
-                        </div>
-                                }
-
-
-                </div>
+                        
+                    </div>
+                }
+                
             </div>
-            <div class="ui rail four wide computer column compre junto">
+            <div class="four wide column compre junto">
                 <div class="ui sticky comprar junto">
                     <table class="ui green table">
                         <thead>
                             <tr class="text center">
-                                <th>Comprando junto você economiza!</th>
+                                <th>Produtos Selecionados</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -192,50 +236,47 @@
                                 {
                                     if (SKUPadrao.PricePromotion != null && SKUPadrao.PricePromotion > 0)
                                     {
-                                        <td class="text right">Preço Total: <span id="compre-junto-total">@SKUPadrao.PricePromotion.Value.ToString("C")</span></td>
+                                        <td class="text center old-price"><span id="compre-junto-total">@SKUPadrao.PricePromotion.Value.ToString("C")</span></td>
                                     }
                                     else
                                     {
-                                        <td class="text right">Preço Total: <span id="compre-junto-total">@SKUPadrao.Price.ToString("C")</span></td>
+                                        <td class="text center old-price"><span id="compre-junto-total">@SKUPadrao.Price.ToString("C")</span></td>
                                     }
                                 }
                                 else
                                 {
                                     if (Model.PricePromotion != null && Model.PricePromotion > 0)
                                     {
-                                        <td class="text right">Preço Total: <span id="compre-junto-total">@Model.PricePromotion.Value.ToString("C")</span></td>
+                                        <td class="text center old-price">Preço Total: <span id="compre-junto-total">@Model.PricePromotion.Value.ToString("C")</span></td>
                                     }
                                     else
                                     {
-                                        <td class="text right">Preço Total: <span id="compre-junto-total">@Model.Price.ToString("C")</span></td>
+                                        <td class="text center old-price">Preço Total: <span id="compre-junto-total">@Model.Price.ToString("C")</span></td>
                                     }
                                 }
                             </tr>
                             <tr>
-                                <td class="text right">Desconto: <span id="compre-junto-desconto">R$ 0,00</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text right">
+                                <td class="text center">
                                     @if (Model.HaveSku)
                                     {
                                         if (SKUPadrao.PricePromotion != null && SKUPadrao.PricePromotion > 0)
                                         {
-                                            <strong>Total: <span id="compre-junto-total-final">@SKUPadrao.PricePromotion.Value.ToString("C")</span></strong>
+                                            <strong><span id="compre-junto-total-final">@SKUPadrao.PricePromotion.Value.ToString("C")</span></strong>
                                         }
                                         else
                                         {
-                                            <strong>Total: <span id="compre-junto-total-final">@SKUPadrao.Price.ToString("C")</span></strong>
+                                            <strong><span id="compre-junto-total-final">@SKUPadrao.Price.ToString("C")</span></strong>
                                         }
                                     }
                                     else
                                     {
                                         if (Model.PricePromotion != null && Model.PricePromotion > 0)
                                         {
-                                            <strong>Total: <span id="compre-junto-total-final">@Model.PricePromotion.Value.ToString("C")</span></strong>
+                                            <strong><span id="compre-junto-total-final">@Model.PricePromotion.Value.ToString("C")</span></strong>
                                         }
                                         else
                                         {
-                                            <strong>Total: <span id="compre-junto-total-final">@Model.Price.ToString("C")</span></strong>
+                                            <strong><span id="compre-junto-total-final">@Model.Price.ToString("C")</span></strong>
                                         }
                                     }
                                 </td>
@@ -248,15 +289,19 @@
                         if (SKUPadrao.Stock > 0)
                         {
                             <a href="" class="ui button action fluid buy-together text uppercase" id="btn_comprejunto" onclick="return false">
-                                <i class="icon add to cart"></i>
-                                Comprar Junto
+                                <div class="visible content">
+                                <i class="icon shopping bag"></i>
+                                Comprar
+                                </div>
                             </a>
                         }
                         else
                         {
                             <a href="" class="ui button action fluid buy-together disabled text uppercase" id="btn_comprejunto" onclick="return false">
-                                <i class="icon add to cart"></i>
-                                Comprar Junto
+                                <div class="visible content">
+                                <i class="icon shopping bag"></i>
+                                Comprar
+                                </div>
                             </a>
                         }
                     }
@@ -265,23 +310,29 @@
                         if (Model.Stock > 0)
                         {
                             <a href="" class="ui button action fluid buy-together text uppercase" id="btn_comprejunto" onclick="return false">
-                                <i class="icon add to cart"></i>
-                                Comprar Junto
+                                <div class="visible content">
+                                <i class="icon shopping bag"></i>
+                                Comprar
+                                </div>
                             </a>
                         }
                         else
                         {
                             <a href="" class="ui button action fluid buy-together disabled text uppercase" id="btn_comprejunto" onclick="return false">
-                                <i class="icon add to cart"></i>
-                                Comprar Junto
+                                <div class="visible content">
+                                <i class="icon shopping bag"></i>
+                                Comprar
+                                </div>
                             </a>
                         }
                     }
+                    <div class="desconto text center">
+                        Economize <span id="compre-junto-desconto">R$ 0,00</span>
+                    </div>
 
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 <script>

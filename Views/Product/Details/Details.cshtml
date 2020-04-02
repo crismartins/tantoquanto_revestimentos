@@ -156,17 +156,16 @@
 }
 
 @section breadcrumbs {
-  <div class="ui two column centered grid stackable left aligned">
+  <section>
     <div class="container">
-      <div class="column">
-        <div class="ui breadcrumb margin top medium">
+        <div class="ui breadcrumb margin top bottom medium left aligned">
           <a class="section" href=""></a>
 
           <!--COMEÇO FOREACH CATEGORIAS-->
           @if (Model.Categories != null)
           {
             <a class="section" href="/">Home</a>
-var categoriaDefault = Model.Categories.Find(c => c.Default == true);
+            var categoriaDefault = Model.Categories.Find(c => c.Default == true);
             if (categoriaDefault != null)
             {
               var urlCategoria = "";
@@ -177,14 +176,13 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
 
               <i class="right angle icon divider"></i>
               <a class="section" href="@categoriaDefault.UrlFriendly">@categoriaDefault.Name</a>
-}
+              }
           }
           <!-- FIM FOREACH CATEGORIAS-->
         </div>
       </div>
-    </div>
-  </div>
-  <div class="ui divider"></div>
+  </section>
+  
 }
 
 <div id="fb-root"></div>
@@ -229,14 +227,15 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
 <input type="hidden" value="@AvailableReferences" id="principal-produto-referecias" name="principal-produto-referecias" />
 <input type="hidden" value="@ViewBag.DescontoBoleto" id="desconto_boleto" name="desconto_boleto" />
 <!-- FIM - Váriaveis Produto Unitário-->
-<div class="ui container" itemscope itemtype="http://schema.org/Product">
+
+<section class="master-content" itemscope itemtype="http://schema.org/Product">
   <meta itemprop="description" content="">
   <link itemprop="url" href="" rel="author" />
-  <div class="ui grid stackable produto">
-    <div class="row product information one column">
+  <div class="produto">
+    <div class="product information">
 
       <!-- COMEÇO MARCA MOBILE-->
-      <div class="mobile only column">
+      <div class="mobile only ui grid stackable">
         <h1 itemprop="name" class="nomeProduto" id="produto-nome">@Model.Name</h1>
         @if (Model.Brand != null)
         {
@@ -259,11 +258,11 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                 if (Model.ProductRatings.Count() == 1)
                 {
                   <span>1 avaliação</span>
-}
+                }
                 else
                 {
                   <span>@Model.ProductRatings.Count() avaliações</span>
-}
+                }
               }
               else
               {
@@ -276,7 +275,9 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
     </div>
 
 
-    <div class="row detalhes produto">
+<div class="detalhes produto">
+  <div class="container ">
+    <div class="ui grid stackable">
       <!-- FIM IMAGENS DO PRODUTO PRINCIPAL-->
       <div class="sixteen wide mobile @classSkus wide computer column" id="exibePartial">
         @Html.Partial("~/Views/Product/Details/_Slide.cshtml", productImages.ToList())
@@ -285,21 +286,13 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
       <div class="ui divider hidden"></div>
       <!-- COMEÇO INFORMAÇÕES DO PRODUTO-->
       <div class="sixteen wide mobile seven wide computer column infoProduto">
-        <div class="ui grid">
-          <div class="mobile-hide row product information">
-            <div class="column">
+          <div class="mobile-hide product information">
+              <h6 itemprop="productID" class="codProduto">SKU: @Model.Code</h6>
               <h1 itemprop="name" class="nomeProduto" id="produto-nome">@Model.Name</h1>
-              @if (@Model.Brand != null)
-              {
-                <h5 itemprop="productBrand" class="marcaProduto">@Model.Brand.Name</h5>
-              }
-              else
-              {
-                <h5 itemprop="productBrand" class="marcaProduto"></h5>
-              }
+              
              @* <div class="ui two column grid stackable">
                 <div class="column">
-                  <h6 itemprop="productID" class="codProduto">@Model.Code</h6>
+                  <h6 itemprop="productID" class="codProduto">SKU: @Model.Code</h6>
                 </div>
                 <div class="column">
                     <div class="avaliacoes">
@@ -309,11 +302,11 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                           if (Model.ProductRatings.Count() == 1)
                           {
                             <span>1 avaliação</span>
-    }
+                          }
                           else
                           {
                             <span>@Model.ProductRatings.Count() avaliações</span>
-    }
+                            }
                         }
                         else
                         {
@@ -329,8 +322,8 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
             @Html.Action("BuyingTips", "Product", new { productID = @Model.IdProduct, skuID = SKUPadrao != null ? SKUPadrao.IdSku : 0 })
           </div>
           <!--FIM DICA DE COMPRA-->
-          <div class="row product-grid">
-            <div class="column blocoInfo">
+          <div class="product-grid">
+            <div class="blocoInfo">
                 <div class="ui middle aligned margin bottom medium blocoValores">
                     @if (hasOpenSku && Model.SKUs != null && Session["EventList"] == null)
                     {
@@ -352,10 +345,9 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                             @Html.Partial("~/Views/Product/Details/_ProductsKit.cshtml", Model.KitProducts)
                         }
 
-                        <div class="column ui attached segment">
+                        <div class="attached segment">
                             <div class="ui grid">
-                                <div class="row stackable two column">
-                                    <div class="column padding-bottom  blocoPreco" itemprop="offers" id="block-price" itemscope="" itemtype="http://schema.org/Offer">
+                                    <div class="eight wide column padding-bottom  blocoPreco" itemprop="offers" id="block-price" itemscope="" itemtype="http://schema.org/Offer">
                                         <div id="variacao-preco">
                                             @if (Model.IsKit)
                                             {
@@ -451,13 +443,9 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                                                 }
                                             }
                                         </div>
-
-                                        @if (!string.IsNullOrEmpty(@Model.DescriptionAvailabilityStatus))
-                                        {
-                                            <p class="text color grey regular parcelamento small">@Model.DescriptionAvailabilityStatus</p>
-                                        }
+              
                                     </div>
-                                    <div class="column middle aligned padding-top no blocoQtd">
+                                    <div class="eight wide column middle aligned padding-top no blocoQtd">
                                         <div class="ui qtd action mini input">
                                             <button class="ui icon button qtdminus" id="qtdminus-detalhes">
                                                 <i class="minus icon"></i>
@@ -474,7 +462,10 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                                     
                                     <!--FIM GRADE-->
 
-                                    <div class="ten wide computer sixteen wide tablet sixteen wide mobile column btnComprar">
+                                    <div class="sixteen wide tablet sixteen wide mobile column btnComprar">
+                                    
+                                    <div class="ui grid">
+                                      <div class="column ten wide">
                                         <a class="@(Model.Stock == 0 || Model.FlagExhausted ? " disabled " : " ") ui button detalhes @(Session["EventList"] != null ? "btn-add-event-list" : "btn-comprar") @(Model.FlagExhausted || (Model.HaveSku && SKUPadrao.Stock == 0) || (Model.Stock == 0) ? "disabled action" : "action" )">
 
                                             @if (Model.FlagExhausted || (Model.HaveSku && SKUPadrao.Stock == 0) || (Model.Stock == 0))
@@ -486,14 +477,15 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                                             else
                                             {
                                                 <div class="visible content">
-                                                    @(Session["EventList"] != null ? "ADICIONAR À LISTA" : "ADICIONAR AO CARRINHO")
+                                                    <i class="icon shopping bag"></i>
+                                                    @(Session["EventList"] != null ? "ADICIONAR À LISTA" : "COMPRAR")
                                                 </div>
                                             }
 
 
-                                            <div class="hidden content">
+                                            <!-- <div class="hidden content">
                                                 <i class="add to cart icon"></i>
-                                            </div>
+                                            </div> -->
                                         </a>
                                         <br />
                                         @if (useOneClickMaxiPago)
@@ -515,21 +507,39 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                                                 color = "red";
                                             }
                                         }
+                                        </div>
+                                        <div class="column wishlistDetails six wide">
                                         @{bool isb2b = Session["segment"] != null && Session["segment"].ToString() == "b2b" ? true : false;
                                             if (!isb2b)
                                             {
-                                                <div class="one column wishlistDetails">
-                                                    <div class="column">
-                                                        <a href="#" class="wishlist-btn" data-wishlist-local="detail">
-                                                            <i class="icon heart @color wishlist-item" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
-                                                            <span>Adicionar a Lista de Desejo</span>
+                                                    
+                                                        <a title="Adicionar a Lista de Desejo" href="#" class="wishlist-btn" data-wishlist-local="detail">
+                                                            <i class="icon bookmark outline @color wishlist-item" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
+                                          
                                                         </a>
-                                                    </div>
-                                                </div>
                                             }
                                         }
+                                        </div>
+                                        </div>
                                     </div>
-                                </div>
+
+                                    <div class="ten wide computer sixteen wide tablet sixteen wide mobile column marca descricao">
+                                      @if (@Model.Brand != null)
+                                        {
+                                          
+                                          <h5 itemprop="productBrand" class="marcaProduto">@Model.Brand.Name</h5>
+                                        }
+                                        else
+                                        {
+                                          <h5 itemprop="productBrand" class="marcaProduto"></h5>
+                                        }
+                                        @if (!string.IsNullOrEmpty(@Model.DescriptionAvailabilityStatus))
+                                        {
+                                            <p class="text color grey regular parcelamento small">@Model.DescriptionAvailabilityStatus</p>
+                                        }
+                                    </div>
+
+                                    
                             </div>
                         </div>
                     }
@@ -543,11 +553,11 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                   @if (@Model.PricePromotion != null && @Model.PricePromotion > 0)
                   {
                     @Html.Action("Payment", "Product", new { valor = @Model.PricePromotion, flagExibir = Model.FlagExhausted == true || Model.Stock <= 0 ? false : true })
-}
+                  }
                   else
                   {
                     @Html.Action("Payment", "Product", new { valor = @Model.Price, flagExibir = Model.FlagExhausted == true || Model.Stock <= 0 ? false : true })
-}
+                  }
                 </div>
               }
 
@@ -558,11 +568,11 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                   if (Model.FlagExhausted || SKUPadrao.Stock == 0)
                   {
                     @Html.Partial("~/Views/Product/Details/_AlertMe.cshtml", true)
-}
+                  }
                   else
                   {
                     @Html.Partial("~/Views/Product/Details/_AlertMe.cshtml", false)
-}
+                  }
                 }
               }
               else
@@ -570,11 +580,11 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                 if (Model.FlagExhausted || Model.Stock == 0)
                 {
                   @Html.Partial("~/Views/Product/Details/_AlertMe.cshtml", true)
-}
+                }
                 else
                 {
                   @Html.Partial("~/Views/Product/Details/_AlertMe.cshtml", false)
-}
+                }
               }
 
               @* <!-- COMEÇO SIMULADOR FRETE-->
@@ -630,10 +640,11 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
               <!-- FIM REDES SOCIAIS--> *@
             </div>
           </div>
-        </div>
-      </div>
+        
       <!-- FIM INFORMAÇÕES DO PRODUTO-->
     </div>
+    </div>
+  </div>
 
         
     <div class="promo-icons">
@@ -665,7 +676,8 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
 
     <div class="ui divider hidden"></div>
     <!--COMEÇO DESCRIÇÃO-->
-    <div class="row">
+    
+    <div class="container descricao" id="descricao">
       <div id="scroll" class="ui top attached secondary pointing stackable menu tabular">
         <a class="item active" data-tab="informacoes">Informações Básicas</a>
         <a class="item" data-tab="detalhes">Características do Produto </a>
@@ -704,10 +716,10 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                       }
                       @attrValues
                     </p>
-}
+                  }
                 }
               </div>
-}
+            }
           }
         </div>
       </div>
@@ -734,11 +746,11 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
                           @if (Model.ProductRatings[i].LeavePublicEmail == true)
                           {
                             <div class="email">@Model.ProductRatings[i].Email</div>
-}
+                          }
                           else
                           {
                             <div class="email"></div>
-}
+                          }
                           <div class="date">@Model.ProductRatings[i].DateRegister</div>
                           <div class="address">@Model.ProductRatings[i].AddressCity</div>
                         </div>
@@ -850,21 +862,21 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
     </div>
     <!--FIM DESCRIÇÃO-->
     @if (!Model.FlagExhausted && !hasOpenSku)
-    {
-      <div class="row" id="buy-together">
-        @if (Model.BuyTogether != null && Model.BuyTogether.Count > 0 && Session["EventList"] == null)
-        {
-          @Html.Partial("~/Views/Product/Details/_BuyTogether.cshtml", Model)
-        }
-      </div>
-    }
-    <div class="row" id="AlsoProducts">
+      {
+        <div class="buy-together" id="buy-together">
+          @if (Model.BuyTogether != null && Model.BuyTogether.Count > 0 && Session["EventList"] == null)
+          {
+            @Html.Partial("~/Views/Product/Details/_BuyTogether.cshtml", Model)
+          }
+        </div>
+      }
+    <div class="AlsoProducts" id="AlsoProducts">
       @if (Model.AlsoProductsPurchased != null && Model.AlsoProductsPurchased.Count > 0)
       {
         @Html.Partial("~/Views/Product/Details/_AlsoPurchased.cshtml", Model.AlsoProductsPurchased)
       }
     </div>
-    <div class="row" id="RelatedProducts">
+    <div class="RelatedProducts" id="RelatedProducts">
       @if (Model.RelatedProducts != null && Model.RelatedProducts.Count > 0)
       {
         @Html.Partial("~/Views/Product/Details/_RelatedProducts.cshtml", Model.RelatedProducts)
@@ -877,7 +889,7 @@ var categoriaDefault = Model.Categories.Find(c => c.Default == true);
       @Html.Partial("~/Views/Product/Details/_FloatingBar.cshtml", Model)
     }
   </div>
-</div>
+</section>
 
 
 <div class="ui modal login">

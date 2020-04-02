@@ -8,15 +8,15 @@
 
 @if (Model.Count > 0)
 {
-    <div class="one column ui attached segment">
-        <div class="column">
+    <div class="attached segment ui grid">
+    <div class="row">
+        <div class="three wide column center aligned">
             @foreach (var item in Model.OrderBy(o => o.OrdinationOfReferences).ToList())
             {
                 TempData["TotalReferencias"] = Model.Count();
 
                 var type = ((LojaCorp.Controllers.Product.ProductController)this.ViewContext.Controller).GetTypeVariation(item.Variations);
 
-                <h5>@item.Name</h5>
 
                 if (type == LojaCorp.Control.VariationsType.COR)
                 {
@@ -49,7 +49,9 @@
                     }
                     ViewBag.VariacoesSelecionadas = variacoesSelecionadas;
                 }
+                <h5 class="var-name">@item.Name</h5>
             }
+        </div>
         </div>
     </div>
 }

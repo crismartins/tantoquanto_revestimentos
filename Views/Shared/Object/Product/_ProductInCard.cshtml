@@ -9,6 +9,7 @@
   <input type="hidden" id="selected-references_@Model.IdProduct" />
   <meta itemprop="productID" content="@Model.IdProduct">
   <div class="content">
+    <div class="image-container">
     @{
         List<DomainCustomer.Entities.Wishlist.WishlistItem> wishList = null;
         bool inlist = false;
@@ -48,11 +49,11 @@
 
         if (!Model.HasConjunct && !isb2b && !isAssistedSale)
         {
-        @* <div class="ui top right attached label massive wishlist">
+        @* <!--<div class="ui top right attached label massive wishlist">
           <div class="bcg-heart wishlist-btn" data-wishlist-local="card" data-tooltip="@textListaDesejo" data-position="top right">
             <i class="wishlist-item icon heart @color" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
           </div>
-        </div> *@
+        </div> -->*@
       }
     }
     @if (Model.AlternativeImage != null)
@@ -81,104 +82,12 @@
         }
       </a>
     }
-    <div class="ui horizontal divider avaliacao">
-      <div class="ui tiny star rating" data-rating="@Model.Rate.Value.ToString().Replace(",", ".")"></div>
-    </div>
 
-    <div class="info">
-
-      
-      <div class="dados">
-        <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="@Model.Name">
-          <h3>
-            <span itemprop="name">
-              @Model.Name
-            </span>
-          </h3>
-        </a>
-        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-
-          <meta itemprop="priceCurrency" content="BRL" />
-          @if (Model.PricePromotion != null && Model.PricePromotion > 0)
-          {
-            <span id="basePrice_@Model.IdProduct" class="precoBase"> <i>@string.Format("{0:c}", Model.Price)</i> por @(Session["segment"] != null && Session["segment"].ToString() == "b2b" && Model.AvailableReferences != null ? "a partir de" : string.Empty)</span>
-            <span class="preco">R$ <span itemprop="price">@string.Format("{0:n2}", Model.PricePromotion)</span></span>
-
-          }
-          else
-          {
-            <span id="price_@Model.IdProduct" class="preco" itemprop="price">
-              <span class="precoBase">
-                @(Session["segment"] != null && Session["segment"].ToString() == "b2b" && Model.AvailableReferences != null ? "a partir de" : string.Empty)
-              </span>
-              R$ @string.Format("{0:n2}", Model.Price)
-            </span>
-          }
-          @if (Model.InstallmentMax != null)
-          {
-            <span class="parcelamento">
-              ou em <span class="installmentMaxNumber">@Model.InstallmentMax.MaxNumber</span>
-              x de <span class="installmentMaxValue">@string.Format("{0:c}", Model.InstallmentMax.Value)</span>
-            </span>
-          }
-
-          @if (Model.Stock >= 0 && !Model.FlagExhausted)
-          {
-            <br /><br />
-            <span class="text color grey regular parcelamento small">
-              @Model.DescriptionAvailabilityStatus
-            </span>
-          }
-
-          @if (!Model.FlagExhausted)
-          {
-            <link itemprop="availability" href="http://schema.org/InStock" content="disponível" />
-          }
-          else
-          {
-            <link itemprop="availability" href="http://schema.org/SoldOut" content="esgotado" />
-          }
-
-        </div>
-      </div>
-      <div class="botoes centered">
-        <!-- Verificar se o produto é conjunto -->
-        @if (Model.HasConjunct)
-        {
-          <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Comprar" class="ui labeled icon button action fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="Model.Name">
-            <i id="btn-icon-card-Model.IdProduct" class="icon announcement"></i>
-            add ao carrinho
-          </a>
-        }
-        else if (Model.FlagExhausted || Model.Stock <= 0)
-        {
-          <a id="btn-comprar-card-@Model.IdProduct" title="Avise-me" class="ui labeled icon button grey fluid avise-card avise-me-modal text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-            <i id="btn-icon-card-@Model.IdProduct" class="icon announcement"></i>
-            Avise-me
-          </a>
-        }
-        else if (Session["EventList"] != null)
-        {
-          <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="ui labeled icon button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-            @* <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i> *@
-            Adicionar à Lista
-          </a>
-        }
-        else
-        {
-          
-          <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="btn-comprar-card-@Model.IdProduct" title="Comprar" class="ui labeled icon button action fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-            @* <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i> *@
-            add ao carrinho
-          </a>
-        }
-
-        @* <a class="ui button btnDetalhes mobile-hide tablet-hide" href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)">
-          <i class="icon search"></i>Detalhes
-        </a> *@
-      </div>
-
-      <div class="sku-options mobile-hide tablet-hide Computer-hide @(Model.AvailableReferences != null ? "mask" : "") @(Session["segment"] != null && Session["segment"].ToString() == "b2b" ? "hideme" : string.Empty)">
+  
+  
+  <div class="info">
+    <div class="botoes">
+    <div class="sku-options @(Model.AvailableReferences != null ? "mask" : "") @(Session["segment"] != null && Session["segment"].ToString() == "b2b" ? "hideme" : string.Empty)">
 
         <span id="produto-esgotado_@Model.IdProduct" class="text center produto-esgotado-label hideme @(Model.FlagExhausted ? " " : "hideme" )">Produto Esgotado</span>
 
@@ -233,35 +142,119 @@
         <!-- Verificar se o produto é conjunto -->
         @if (Model.HasConjunct)
         {
-          <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Comprar" class="ui labeled icon button action fluid btn-comprar text uppercase" data-idproduct="@Model.IdProduct" data-name="Model.Name">
+          <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Add ao carrinho" class="button action fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="Model.Name">
             <i id="btn-icon-card-Model.IdProduct" class="icon announcement"></i>
-            add ao carrinho
           </a>
+          <div class="bcg-heart button wishlist-btn" data-wishlist-local="card" title="@textListaDesejo">
+            <i class="wishlist-item icon outline bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
+          </div>
         }
         else if (Model.FlagExhausted || Model.Stock <= 0)
         {
-          <a id="btn-comprar-card-@Model.IdProduct" title="Avise-me" class="ui labeled icon button grey fluid avise-card avise-me-modal text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
+          <a id="btn-comprar-card-@Model.IdProduct" title="Avise-me" title="Avise-me" class="icon button grey avise-card avise-me-modal text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
             <i id="btn-icon-card-@Model.IdProduct" class="icon announcement"></i>
-            Avise-me
           </a>
+          <div class="bcg-heart button wishlist-btn" data-wishlist-local="card" title="@textListaDesejo">
+            <i class="wishlist-item icon outline bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
+          </div>
         }
         else if (Session["EventList"] != null)
         {
-          <a id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="ui labeled icon button primary fluid add-event-list text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-            @* <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i> *@
-            Adicionar à Lista
+          <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="icon button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
+            <i id="btn-icon-card-@Model.IdProduct" class="icon outline bookmark"></i>
+            
           </a>
         }
         else
         {
-          <a id="btn-comprar-card-@Model.IdProduct" title="Comprar" class="ui labeled icon button action fluid btn-comprar-card text uppercase" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-            @* <i id="btn-icon-card-@Model.IdProduct" class="icon add to cart"></i> *@
-            add ao carrinho
+          
+          <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Add ao carrinho" id="btn-comprar-card-@Model.IdProduct" class="button action fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
+            <i id="btn-icon-card-@Model.IdProduct" class="icon shopping bag outline"></i>
           </a>
+          <div class="bcg-heart button action fluid text uppercase wishlist-btn" data-wishlist-local="card" title="@textListaDesejo" >
+            <i class="wishlist-item icon outline bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
+          </div>
         }
+
+        @* <a class="ui button btnDetalhes mobile-hide tablet-hide" href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)">
+          <i class="icon search"></i>Detalhes
+        </a> *@
       </div>
 
-
-    </div>
+          </div>
   </div>
+</div>
+    <!-- <div class="ui horizontal divider avaliacao">
+      <div class="ui tiny star rating" data-rating="@Model.Rate.Value.ToString().Replace(",", ".")"></div>
+    </div> -->
+
+    <div class="content-info">
+
+      
+      <div class="dados ui grid">
+        <div class="eight wide column">
+        <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="@Model.Name">
+          <h3>
+            <span itemprop="name">
+              @Model.Name
+            </span>
+          </h3>
+        </a>
+        @if (Model.Brand != null)
+          {
+            <h5 itemprop="productBrand" class="marcaProduto">@Model.Brand.Name</h5>
+          }
+        </div>
+        
+        <div class="eight wide column" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+          <meta itemprop="priceCurrency" content="BRL" />
+          @if (Model.PricePromotion != null && Model.PricePromotion > 0)
+          {
+            <span id="basePrice_@Model.IdProduct" class="precoBase"> <i>@string.Format("{0:c}", Model.Price)</i> por @(Session["segment"] != null && Session["segment"].ToString() == "b2b" && Model.AvailableReferences != null ? "a partir de" : string.Empty)</span>
+            <span class="preco">R$ <span itemprop="price">@string.Format("{0:n2}", Model.PricePromotion)</span></span>
+
+          }
+          else
+          {
+            <span id="price_@Model.IdProduct" class="preco" itemprop="price">
+              <span class="precoBase">
+                @(Session["segment"] != null && Session["segment"].ToString() == "b2b" && Model.AvailableReferences != null ? "a partir de" : string.Empty)
+              </span>
+              R$ @string.Format("{0:n2}", Model.Price)
+            </span>
+          }
+          @if (Model.InstallmentMax != null)
+          {
+            <span class="parcelamento">
+              ou em <span class="installmentMaxNumber">@Model.InstallmentMax.MaxNumber</span>
+              x de <span class="installmentMaxValue">@string.Format("{0:c}", Model.InstallmentMax.Value)</span>
+            </span>
+          }
+
+          @if (Model.Stock >= 0 && !Model.FlagExhausted)
+          {
+            <br /><br />
+            <span class="text color grey regular parcelamento small">
+              @Model.DescriptionAvailabilityStatus
+            </span>
+          }
+
+          @if (!Model.FlagExhausted)
+          {
+            <link itemprop="availability" href="http://schema.org/InStock" content="disponível" />
+          }
+          else
+          {
+            <link itemprop="availability" href="http://schema.org/SoldOut" content="esgotado" />
+          }
+
+        </div>
+      </div>
+      
+
+      
+
+</div>
+    </div>
 </div>

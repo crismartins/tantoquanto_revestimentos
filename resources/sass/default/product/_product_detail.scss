@@ -1,3 +1,18 @@
+//*new css start
+.produto{
+  .slick-track{
+    width:100% !important;
+  }
+  .thumbnails .slick-slide{
+    width:100% !important;
+    margin: 6px 0;
+    a{
+      display: block;
+    }
+  }
+}
+
+//*new css end
 h1.nomeProduto {
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -235,6 +250,18 @@ h6.codProduto {
   &.selecionado {
     box-shadow: 0 0 0 3px rgba(0, 0, 0, .35) !important;
   }
+
+  &.ui.image{
+    img{
+      border-radius: 50px;
+    }
+    &.img-selecionado{
+      img{
+        border-color: $action !important;
+      }
+    }
+  }
+
 }
 
 .product {
@@ -289,14 +316,24 @@ h6.codProduto {
   margin-right: 3px;
 }
 
+.promo-icons{
+  img{
+    max-width: 100px;
+  }
+}
 
-.menu.tabular {
-  .item {
-    color: #999 !important;
-    text-transform: uppercase;
+.descricao{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .menu.tabular {
+    .item {
+      color: #999 !important;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
 
-    &.active {
-      color: $black !important;
+      &.active {
+        color: $black !important;
+      }
     }
   }
 }
@@ -339,22 +376,44 @@ h6.codProduto {
   }
 
   .ui.table {
-    border: 1px solid #eee;
+    border: 0;
     color: #666666;
     border-radius: 0 !important;
+    text-align: center;
 
     strong {
       color: #000;
     }
 
     thead th {
-      background-color: #999999;
-      color: #fff;
-      font-size: 14px;
+      font-size: 22px;
       font-weight: bold;
       border-radius: 0 !important;
+      background: transparent;
+      border:0;
+    }
+    tr,td,th,thead,tbody{
+      border:0;
+      .old-price{
+        font-size: 16px;
+      }
+      strong{
+        color: $primary-color;
+        font-size: 28px;
+      }
     }
   }
+
+.ui.button.action{
+  line-height: 40px;
+}
+
+.desconto{
+  font-size: 16px;
+  font-weight: bold;
+  padding: 20px 0;
+}
+
 
   #price-buy-together,
   h4 {
@@ -368,6 +427,31 @@ h6.codProduto {
       opacity: 1 !important;
     }
   }
+
+  .card.produto{
+    padding: 0;
+  }
+    .extra{
+        position: relative;
+        .junto{
+            background-color: #F6F6F6 !important;
+            border:1px solid #B2B2B2;
+            color: #F6F6F6 !important;
+            position: relative;
+            border-radius: 0;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            .checkmark{
+                color: $primary-color !important;
+                background-color: transparent !important;
+                left: 0;
+                top: 2px;
+                font-size: 34px !important;
+            }
+        }
+    }
+
 }
 
 
