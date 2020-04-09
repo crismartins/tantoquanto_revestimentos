@@ -28,7 +28,7 @@
                 padding: 12px;
                 display: inline-block;
                 color: $white;
-                font-size:20px;
+                font-size:26px;
                 i{
                     padding: 0;
                     margin: 0;
@@ -53,7 +53,7 @@
 
                 h3,.title {
                     font-weight: bold;
-                    color: $black;
+                    color: $black-theme;
                     font-size: 20px;
                     margin-bottom: 10px;
                     word-break: break-word;
@@ -63,7 +63,7 @@
                     font-style: italic;
                     font-weight: normal;
                     font-size: 14px;
-                    margin-top: 10px;
+                    margin: 10px 0;
                 }
 
                 .precoBase {
@@ -284,6 +284,7 @@
                 }
 
                 &.price {
+                    font-family:$font-raleway;
                     height: 15px;
                     margin-top: 15px;
                     margin-bottom: 10px;

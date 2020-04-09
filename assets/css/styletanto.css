@@ -87,18 +87,6 @@ header {
     width: 1.575rem;
 }
 
-a#total_itens_card {    
-    background: #ee4022 !important;
-    color: #FFF;
-    border-radius: 12px;
-    left: 0;
-    font-size: 1rem;
-    padding: 1px 4px 2px 4px;
-    margin: 0px -5px 0px 0px;
-    /* z-index: auto; */
-    /* position: absolute; */
-}
-
 .ui.sidebar.carrinho > div.row:first-child, #miniCarrinho > div.row:first-child {
     padding: 1px 1px 0px 4rem !important;
 }
@@ -894,10 +882,6 @@ footer a {
 		font-size: 18px;
 		font-weight: bold;
 	}
-	
-	div#cartButton {
-		padding: 8px 32px 5px 3px !important;
-	}
 
 	.add-to-cart {
 		padding: 0 10px;
@@ -912,7 +896,7 @@ footer a {
 		margin-right: 0em !important;
 	}
 
-	.ui.grid > .column:not(.row), .ui.grid > .row > .column {
+	/*.ui.grid > .column:not(.row), .ui.grid > .row > .column {
 		position: relative;
 		display: inline-block;
 		width: 6.25%;				
@@ -921,7 +905,7 @@ footer a {
 		padding-right: 2px !important;
 		vertical-align: top;
 		margin: 0px -6px;
-	}
+	}*/
 
 	.fav-link {
 		position: absolute;
@@ -1096,12 +1080,6 @@ footer a {
 }
 
 /***************PAGINA PRODUTO*************************/
-
-h1.nomeProduto {
-    
-	font-size: 1.8rem !important;
-  
-}
 
 span.precoAntigo {
     text-decoration: line-through;

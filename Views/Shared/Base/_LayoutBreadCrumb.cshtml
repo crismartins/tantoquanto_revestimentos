@@ -69,15 +69,10 @@
 
         @RenderSection("breadcrumbs", required: true)
 
-        <div class="ui">
-            <div class="ui grid">
-            
-                <div class="one column">
+        <div class="master-container">
                         @RenderSection("banner", required: false)
 
                         @RenderBody()
-                </div>
-            </div>
         </div>
 
         <!-- ~/Views/Shared/Common/_Footer.cshtml -->

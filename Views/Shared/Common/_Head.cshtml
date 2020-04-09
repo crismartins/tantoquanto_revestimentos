@@ -2,91 +2,84 @@
   string _classSearch = Session["idEventList"] == null ? "search" : "filterListEventsProducts";
   string _classMiniCart = Session["idEventList"] == null && Session["EventList"] == null ? "mini-cart" : "mini-cart-list-event";
 }
-<div class="ui container fluid _header">
-  <div class="ui container">
-    <div class="ui middle aligned five column centered grid">
-      <div class="row">
-        <div class="ui container four wide mobile only column">
-          <div class="menu-icon">
-              <a href="#">MENU</a>
-            </div>
+<header class="_header">
+  <div class="head-menu">
+  <div class="container">
+    <div class="ui text menu">
+      <a class="item" href="#" title="Pinterest">
+        <i class="icon-tanto-pinterest"></i> 
+      </a>
+      <a class="item" href="#" title="Facebook">
+        <i class="icon-tanto-facebook"></i> 
+      </a>
+      <a class="item" href="#" title="Instagram">
+        <i class="icon-tanto-intagram"></i> 
+      </a>
+      <a class="item" href="#" title="Youtube">
+        <i class="icon-tanto-youtube"></i> 
+      </a>
+      <a class="item" href="#" title="Youtube">
+        <i class="icon-tanto-whatsapp"></i> 
+      </a>
+      
+      <div class="right menu">
+        <div class="ui item">
+          <strong>Televendas:</strong>  21 3333-9090
         </div>
-        <div class="ui eight wide mobile two wide tablet two wide computer column">
-          <a href="/Home" title="Página Inicial">
-            <img class="ui middle aligned image logo" src="/assets/image/logo/logo.png" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName">
-          </a>
-        </div>
-        <div class="ui center aligned six wide tablet ten wide computer column searchcolumn">
-          <div class="ui category @_classSearch">
-            <div class="ui icon input fluid">
-              <input class="prompt" type="text" placeholder="Buscar...">
-              <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
-          </div>
-        </div>
-        <div class="ui center aligned one wide computer only column" >
-          <a href="/customer" title="Area do Cliente">
-            <img width="25px" src="/assets/image/account.png">                  
-          </a>
-        </div>        
-          <div class="ui right aligned four wide mobile two wide tablet one wide computer column">
-              <div id="cartButton" class="ui labeled button cartbutton no margin bottom @_classMiniCart" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
-                <div class="cart-button">
-                  <a class="ui left  primary label" id="total_itens_card">
-                  @{
-                    if (Session["EventList"] == null)
-                    {
-                      @Html.Action("TotalItensCart", "Checkout")
-                    }
-                    else
-                    {
-                      @Html.Action("TotalItensList", "EventList")
-                    }
-                  }
-                </a>
-                  <img width="25px" title="Meu Carrinho" src="/assets/image/bag.png"/>
-                  @* <i class="cart icon"></i> *@
-                  @* <span>@(Session["idEventList"] == null && Session["EventList"] == null ? "Meu Carrinho" : "Minha Lista")</span> *@
-                </div>                
-              </div>
-          </div>
-          <div class="ui right aligned  one wide computer only column">
-            <div class="menu-icon">
-              <a href="#">MENU</a>
-            </div>
-          </div>
-           <div class="ui right aligned  one wide tablet only column">
-            <div class="menu-icon">
-              <a href="#">MENU</a>
-            </div>
-          </div>
-          <div class="ui center aligned fourteen wide mobile only column searchcolumn active">
-          <div class="ui category @_classSearch">
-            <div class="ui icon input fluid">
-              <input class="prompt" type="text" placeholder="Buscar...">
-              <i class="search icon"></i>
-            </div>
-            <div class="results"></div>
-          </div>
-        </div>                                                                          
-                          @* <div class="ui searchMobile mobile only">
-                                                <div class="ui button icon centered">
-                                                  <i class="search icon"></i>
-                                                </div>
-                                      <div class="ui blocoBusca @_classSearch">
-                                                      <div class="ui input fluid blocoBuscaContainer">
-                                                        <input class="prompt" type="text" placeholder="">
-                                                        <i class="search icon search-results"></i>
-                                                        <i class="close icon disabled" id="closeResultsMobile"></i>
-                                                      </div>
-                                                      <div class="results"></div>
-                                      </div>
-                          </div> *@
-          
+        <div class="ui item">
+          <i class="icon-tanto-whatsapp"></i> 21 99889-9090
         </div>
       </div>
     </div>
   </div>
+  </div>
+
+  <div class="container">
+    <div class="ui text menu">
+      <a class="item" href="/Home" title="Página Inicial">
+        <img class="ui middle aligned image logo" src="/assets/image/logo/logo-tanto.svg" alt="@LojaCorp.Control.Company._Company.FantasyName" title="@LojaCorp.Control.Company._Company.FantasyName">
+      </a>
+      <div class="right menu searchform-menu">
+          <div class="ui searchcolumn item category @_classSearch">
+            <div class="ui icon input fluid">
+              <input class="prompt" type="text" placeholder="Buscar...">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+      </div>
+    
+      <div class="right menu">
+        <div class="ui item computer only login-user" >
+            <a href="/customer" title="Area do Cliente">
+              <i class="icon-tanto-user"></i>               
+            </a>
+        </div>        
+        <div class="ui item carrinho-compras">
+                  <div id="cartButton" class="ui labeled cartbutton @_classMiniCart" tabindex="0" data-segment="@(Session["segment"] != null ? Session["segment"] : "b2c")">
+                    <div class="cart-button">
+                      <span class="ui left primary label" id="total_itens_card">
+                        @{
+                          if (Session["EventList"] == null)
+                          {
+                            @Html.Action("TotalItensCart", "Checkout")
+                          }
+                          else
+                          {
+                            @Html.Action("TotalItensList", "EventList")
+                          }
+                        }
+                      </span>
+                      <i class="icon-tanto-bag"></i>    
+                    </div>                
+                  </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <!-- ~/Views/Shared/Common/_Menu.cshtml -->
+             @Html.Action("Menu", "Home")
+  </header>
 
 

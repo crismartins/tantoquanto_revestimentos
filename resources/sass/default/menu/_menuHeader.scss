@@ -4,10 +4,51 @@ $menuHeight: 50px;
 $menuHoverBorderColor: $secondary-color;
 $colorLinkSubMenu: "#666";
 
+
+
 .menuheader {
+
+  .master-submenu{
+    position: relative;
+    .content-item{
+      padding: 0 !important;
+      a{
+        border: 1px solid #CACACA;
+        display: block;
+        color: #848484 !important;
+        font-weight: bold;
+        background: #F8F8F8;
+        &:hover{
+          background: $white;
+          border-right-color: transparent;
+          color: #848484 !important;
+        }
+        
+      }
+      .submenu-itens{
+        display: none;
+        border: 1px solid #CACACA;
+        background: $white;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      &:hover{
+        .submenu-itens{
+          display: block;
+        }
+      }
+    }
+  
+    
+}
+
   background-color: $menuBG;
-  min-height: $menuHeight;
+  min-height: auto;
   width: 100%;
+  text-align: center;
   /*Sub Classes*/
   .ui.menu {
     background: transparent;
@@ -16,28 +57,37 @@ $colorLinkSubMenu: "#666";
     box-shadow: none;
     display: flex;
     font-weight: 400;
-    min-height: 2.85714286em;
+    min-height: auto;
     flex-wrap: wrap;
     margin:0;
     li {
       &:hover,
       &.active,
       &:focus {
-        box-shadow: inset 0 -5px 0 $menuHoverBorderColor;
+        // box-shadow: inset 0 -5px 0 $menuHoverBorderColor;
+        > .item {
+          font-weight: bold;
+        }
         }
       > .item {
         word-wrap: normal;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          text-transform: uppercase;
           margin:0;
           font-size: 14px;
-          line-height: $menuHeight; 
+          line-height: normal;
+          padding: 15px 10px;
+
+          &:before{
+            display: none;
+          }
             
         
         > .icon.dropdown {
           line-height: 18px;
+          color: rgba(0,0,0,0.3);
+          margin:0em 0em 0em 0.5em;
           }
         > .icon.content {
           font-size: 26px;
@@ -79,8 +129,8 @@ $colorLinkSubMenu: "#666";
     }
   .ui.menu .item:hover,
   .ui.menu .item.active {
-    box-shadow: inset 0 -5px 0 $menuHoverBorderColor;
     color: $menuTextColor;
+    
     }
   .sub-megamenu {
     .ui.link.list {
@@ -107,7 +157,6 @@ $colorLinkSubMenu: "#666";
       &.active,
       &:focus {
         color: rgba(0, 0, 0, .9);
-        box-shadow: inset 5px 0 0 $menuHoverBorderColor;
         transition: opacity 0.3s ease-in-out;
         }
       }

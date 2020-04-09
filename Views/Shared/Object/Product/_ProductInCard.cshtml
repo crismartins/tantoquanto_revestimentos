@@ -146,7 +146,7 @@
             <i id="btn-icon-card-Model.IdProduct" class="icon announcement"></i>
           </a>
           <div class="bcg-heart button wishlist-btn" data-wishlist-local="card" title="@textListaDesejo">
-            <i class="wishlist-item icon outline bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
+            <i class="wishlist-item icon-tanto-bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
           </div>
         }
         else if (Model.FlagExhausted || Model.Stock <= 0)
@@ -155,13 +155,13 @@
             <i id="btn-icon-card-@Model.IdProduct" class="icon announcement"></i>
           </a>
           <div class="bcg-heart button wishlist-btn" data-wishlist-local="card" title="@textListaDesejo">
-            <i class="wishlist-item icon outline bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
+            <i class="wishlist-item icon-tanto-bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
           </div>
         }
         else if (Session["EventList"] != null)
         {
           <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" id="add-event-list-@Model.IdProduct" title="Adicionar à Lista" class="icon button primary fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-            <i id="btn-icon-card-@Model.IdProduct" class="icon outline bookmark"></i>
+            <i id="btn-icon-card-@Model.IdProduct" class="icon-tanto-bookmark"></i>
             
           </a>
         }
@@ -169,10 +169,10 @@
         {
           
           <a href="@(Model.UrlFriendlyCustom != null ? Model.UrlFriendlyCustom : Model.UrlFriendly)" title="Add ao carrinho" id="btn-comprar-card-@Model.IdProduct" class="button action fluid text uppercase btnComprar" data-idproduct="@Model.IdProduct" data-name="@Model.Name">
-            <i id="btn-icon-card-@Model.IdProduct" class="icon shopping bag outline"></i>
+            <i id="btn-icon-card-@Model.IdProduct" class="icon-tanto-bag"></i>
           </a>
           <div class="bcg-heart button action fluid text uppercase wishlist-btn" data-wishlist-local="card" title="@textListaDesejo" >
-            <i class="wishlist-item icon outline bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
+            <i class="wishlist-item icon-tanto-bookmark" data-in-list="@inlist" data-have-sku="@(Model.AvailableReferences != null && Model.AvailableReferences.Count() > 0 ? "true" : "false")" data-product-id="@Model.IdProduct"></i>
           </div>
         }
 
@@ -234,7 +234,7 @@
 
           @if (Model.Stock >= 0 && !Model.FlagExhausted)
           {
-            <br /><br />
+            
             <span class="text color grey regular parcelamento small">
               @Model.DescriptionAvailabilityStatus
             </span>
